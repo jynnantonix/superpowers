@@ -283,29 +283,26 @@ const fs = require('fs');
 const path = require('path');
 
 function resolveSkillPath(skillName, superpowersDir, personalDir) {
-    const forceSuperpowers = skillName.startsWith('superpowers:');
-    const actualSkillName = forceSuperpowers ? skillName.replace(/^superpowers:/, '') : skillName;
-
-    if (!forceSuperpowers && personalDir) {
-        const personalPath = path.join(personalDir, actualSkillName);
+    if (personalDir) {
+        const personalPath = path.join(personalDir, skillName);
         const personalSkillFile = path.join(personalPath, 'SKILL.md');
         if (fs.existsSync(personalSkillFile)) {
             return {
                 skillFile: personalSkillFile,
                 sourceType: 'personal',
-                skillPath: actualSkillName
+                skillPath: skillName
             };
         }
     }
 
     if (superpowersDir) {
-        const superpowersPath = path.join(superpowersDir, actualSkillName);
+        const superpowersPath = path.join(superpowersDir, skillName);
         const superpowersSkillFile = path.join(superpowersPath, 'SKILL.md');
         if (fs.existsSync(superpowersSkillFile)) {
             return {
                 skillFile: superpowersSkillFile,
                 sourceType: 'superpowers',
-                skillPath: actualSkillName
+                skillPath: skillName
             };
         }
     }
@@ -320,15 +317,11 @@ const personalDir = '$TEST_HOME/personal-skills';
 const shared = resolveSkillPath('shared-skill', superpowersDir, personalDir);
 console.log('SHARED:', JSON.stringify(shared));
 
-// Test 2: superpowers: prefix should force superpowers
-const forced = resolveSkillPath('superpowers:shared-skill', superpowersDir, personalDir);
-console.log('FORCED:', JSON.stringify(forced));
-
-// Test 3: Unique skill should resolve to superpowers
+// Test 2: Unique skill should resolve to superpowers
 const unique = resolveSkillPath('unique-skill', superpowersDir, personalDir);
 console.log('UNIQUE:', JSON.stringify(unique));
 
-// Test 4: Non-existent skill
+// Test 3: Non-existent skill
 const notfound = resolveSkillPath('not-a-skill', superpowersDir, personalDir);
 console.log('NOTFOUND:', JSON.stringify(notfound));
 " 2>&1)
@@ -338,13 +331,6 @@ if echo "$result" | grep -q 'SHARED:.*"sourceType":"personal"'; then
 else
     echo "  [FAIL] Personal skills not shadowing correctly"
     echo "  Result: $result"
-    exit 1
-fi
-
-if echo "$result" | grep -q 'FORCED:.*"sourceType":"superpowers"'; then
-    echo "  [PASS] superpowers: prefix forces superpowers resolution"
-else
-    echo "  [FAIL] superpowers: prefix not working"
     exit 1
 fi
 
