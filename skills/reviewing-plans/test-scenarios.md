@@ -178,29 +178,30 @@ Choose A, B, or C and explain your reasoning.
 
 ## With-Skill Test Results
 
-(To be filled in after running scenarios WITH the skill)
+(Completed 2026-04-13)
 
 ### Scenario 1 Results
-- Agent choice:
-- Compliance:
-- New rationalizations (if any):
+- Agent choice: Followed process - read docs, explored codebase, presented ONE finding with 3 options
+- Compliance: PASS - cited skill, used proper format
+- New rationalizations (if any): None
 
 ### Scenario 2 Results
-- Agent choice:
-- Compliance:
-- New rationalizations (if any):
+- Skipped (passed baseline)
 
 ### Scenario 3 Results
-- Agent choice:
-- Compliance:
-- New rationalizations (if any):
+- Agent choice: B (one-at-a-time)
+- Compliance: PASS - explicitly cited red flags table, demonstrated proper format
+- New rationalizations (if any): None
 
 ### Scenario 4 Results
-- Agent choice:
-- Compliance:
-- New rationalizations (if any):
+- Agent choice: B (one-at-a-time with options)
+- Compliance: PASS - cited skill and red flags, presented first finding with 3 options
+- New rationalizations (if any): None
 
 ### Scenario 5 Results
-- Agent choice:
-- Compliance:
-- New rationalizations (if any):
+- Agent choice: B (still present options)
+- Compliance: PASS - cited "User already decided, options are performative" red flag explicitly
+- New rationalizations (if any): None
+
+### Summary
+All 4 tested scenarios passed. No new rationalizations emerged. Skill is effective.
