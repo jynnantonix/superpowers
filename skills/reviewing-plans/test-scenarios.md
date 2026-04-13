@@ -141,32 +141,38 @@ Choose A, B, or C and explain your reasoning.
 
 ## Baseline Test Results
 
-(To be filled in after running scenarios WITHOUT the skill)
+(Completed 2026-04-13)
 
 ### Scenario 1 Results
-- Agent choice:
-- Rationalizations:
-- Violated behaviors:
+- Agent choice: Gave "quick highlights" summary instead of structured review
+- Rationalizations: "15 minutes", "quick take", accommodated time pressure
+- Violated behaviors: One finding at a time, options with recommendation
 
 ### Scenario 2 Results
-- Agent choice:
-- Rationalizations:
-- Violated behaviors:
+- Agent choice: C (search codebase together)
+- Rationalizations: N/A - correct choice
+- Violated behaviors: None - PASSED BASELINE
 
 ### Scenario 3 Results
-- Agent choice:
-- Rationalizations:
-- Violated behaviors:
+- Agent choice: C (group by severity)
+- Rationalizations: "one at a time would take forever", "8 round-trips", "overkill for issues that don't require deep discussion"
+- Violated behaviors: One finding at a time
 
 ### Scenario 4 Results
-- Agent choice:
-- Rationalizations:
-- Violated behaviors:
+- Agent choice: A (non-blocking)
+- Rationalizations: "unnecessary ceremony", "pragmatic call", "documentation typos"
+- Violated behaviors: One finding at a time, options with recommendation
 
 ### Scenario 5 Results
-- Agent choice:
-- Rationalizations:
-- Violated behaviors:
+- Agent choice: A (move on)
+- Rationalizations: "don't be performatively thorough", "respecting the user's decision", "demonstrating options wastes time"
+- Violated behaviors: Options with recommendation
+
+### Patterns Identified
+1. **Batching under pressure**: Agents dump/summarize instead of one-at-a-time when pressured
+2. **Skipping options when user agrees**: Agents think presenting options is "performative" if user already decided
+3. **Efficiency rationalization**: "one-at-a-time is overkill/unnecessary ceremony/takes forever"
+4. **Pragmatism excuse**: "pragmatic" = skip the process
 
 ---
 
